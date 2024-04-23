@@ -3,5 +3,6 @@ def open_file(file):
         pass
 
 
-
-
+if __name__ == '__main__':
+    letter = input_normal_letter()
+    print(f"Ви ввели букву: {letter}")

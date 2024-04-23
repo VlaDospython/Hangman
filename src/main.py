@@ -16,29 +16,15 @@ Hangman – інструкція до гри.
 from data import *
 from functions import *
 
-
-class Hangman:
-    def __init__(self):
-        self.word = ""
-        self.used_symbols = ""
-        self.lives = 8
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
-    game = Hangman()
+    # які змінні нам треба
+    computer_word = get_random_word()
+    letter = input_normal_letter()
+    lives = 8
+    player_word = len(computer_word) * ["_"]
+    list_of_all_player_letters = []
 
-    for row in picture.values():
-        print(row)
+    # код програми
+
+    ...
+

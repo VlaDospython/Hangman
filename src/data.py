@@ -6,7 +6,7 @@ picture = {
 
                                 Слово:
 
-                                {self.word}
+                                $word
 
 
 
