@@ -15,6 +15,7 @@ Hangman – інструкція до гри.
 
 from data import *
 from functions import *
+import sys
 
 if __name__ == '__main__':
     # які змінні нам треба
@@ -24,39 +25,50 @@ if __name__ == '__main__':
     lives = 8
     player_word = len(computer_word) * ["_"]
 
+
     # код програми
 
     def check_letter():
-        print(letter)
-        print(computer_word)
-        for a in computer_word.split():
-            if a == letter:
-                print("djfdv")
+        global letter, lives, player_word
 
-        if letter in computer_word:
-            return True
+        if str(letter) in str(computer_word):
+            print("yesss")
+
+            indexes = [i for i in range(len(computer_word)) if computer_word[i] == letter]
+
+            list_player_word = list(player_word)
+
+            for index in indexes:
+                list_player_word[index] = letter
+
+            player_word = ''.join(list_player_word)
         else:
-            return False
+            lives -= 1
 
 
     def func():
+        global letter
+
         def func_():
+            if computer_word == player_word:
+                print(f'Ви відгадали слово: {computer_word}!')
+                sys.exit(0)
+
+            if lives == 0:
+                print(f'Ви не відгадали слово: {computer_word}!')
+                sys.exit(0)
+
+            global letter
             letter = input_normal_letter(list_of_all_player_letters)
             func()
 
-        print(f"Ви ввели букву: {letter}")
+        print(f"Ви ввели букву: {letter}, computer_word: {computer_word}")
+        check_letter()
         a = picture[lives].replace("$word", str("".join(player_word))).replace("$used", str(", ".join(list_of_all_player_letters)))
         print(a)
         func_()
 
-    if check_letter():
-        # for a in computer_word.split():
-        #     if a == letter:
-        #         a = letter
-        #         print(computer_word)
+    func()
 
-        func()
-    else:
-        lives -= 1
-        func()
+
 
